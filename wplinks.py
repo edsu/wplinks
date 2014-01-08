@@ -14,7 +14,7 @@ import codecs
 import urllib
 import urllib2
 
-RETRIES_BETWEEN_API_ERRORS = 5
+RETRIES_BETWEEN_ERRORS = 5
 
 def main(website_url):
     langs = ["ar", "bg", "ca", "cs", "da", "de", "el", "en", "eo", "es",
@@ -51,7 +51,7 @@ def links(site, lang='en', page_size=500, offset=0):
             break
 
 
-def _fetch(url, params=None, retries=RETRIES_BETWEEN_API_ERRORS):
+def _fetch(url, params=None, retries=RETRIES_BETWEEN_ERRORS):
     if params:
         req = urllib2.Request(url, data=urllib.urlencode(params))
         req.add_header('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8')
@@ -73,7 +73,7 @@ def _fetch_again(e, url, params, retries):
             raise e
         else: 
             # should back off 10, 20, 30, 40, 50 seconds
-            sleep_seconds = (RETRIES_BETWEEN_API_ERRORS - retries) * 10
+            sleep_seconds = (RETRIES_BETWEEN_ERRORS - retries) * 10
             time.sleep(sleep_seconds)
             return _fetch(url, params, retries)
 
