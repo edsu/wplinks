@@ -1,9 +1,11 @@
 #!/usr/bin/env python
+# -*- coding: utf8 -*-
+
 
 """
 Give wplinks a website URL and it will scrape the Wikipedia External link 
 search form for 36 Wikipedias and print out the results as tab separated
-columns: wikipedia language, wikipedia article url, external link url.
+columns: wikipedia article url, external link url.
 """
 
 import re
@@ -23,8 +25,7 @@ def main(website_url):
             "sv", "tr", "uk", "vi", "vo", "zh"]
     for lang in langs:
         for src, target in links(website_url, lang=lang):
-            print type(src), type(target)
-            print lang, "\t", src.encode('utf8'), "\t", target.encode('utf8')
+            print src.encode('utf8'), "\t", target.encode('utf8')
     
 
 def links(site, lang='en', page_size=500, offset=0):
@@ -40,10 +41,10 @@ def links(site, lang='en', page_size=500, offset=0):
         html = codecs.decode(_fetch(url), 'utf8')
         found = 0
         for line in html.split("\n"):
-            m = re.search('<li><a class="external".+href="(.+)".+<a href="(/wiki/.+?)"', line)
+            m = re.search('<li><a class="external".+?href="([^"]+)".+?<a href="(/wiki/[^"]+)"', line)
             if m:
                 found += 1
-                yield wikipedia_host + m.group(1), m.group(0)  
+                yield wikipedia_host + m.group(2), m.group(1)  
 
         if found == page_size:
             offset += page_size
