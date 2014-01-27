@@ -12,7 +12,7 @@ Usage
 
 import wplinks
 
-for src, target in links('http://example.com'):
+for src, target in links('http://www.theparisreview.org/interviews'):
     print src, target
 ```
 
