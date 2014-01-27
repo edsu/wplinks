@@ -12,4 +12,13 @@ def test_links():
     assert u.netloc == 'www.theparisreview.org'
     assert u.path.startswith('/interviews')
 
+def test_lang():
+    results = list(links("http://www.theparisreview.org/interviews", lang='fr'))
+    assert len(results) > 0
+    u = urlparse(results[0][0])
+    assert u.netloc == 'fr.wikipedia.org'
+    u = urlparse(results[0][1])
+    assert u.netloc == 'www.theparisreview.org'
+    assert u.path.startswith('/interviews')
+
 
