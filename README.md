@@ -3,10 +3,12 @@ wplinks
 
 [![Build Status](https://secure.travis-ci.org/edsu/wplinks.png)](http://travis-ci.org/edsu/wplinks)
 
-wplinks provides a the `links` function that returns a generator for links 
-from Wikipedia articles to a particular website, or portion of a website. It 
-actually just iteratively scrapes the results of the 
-[External links search][1] page.
+wplinks provides a generator function called `links` that lets you iterate
+through links from Wikipedia articles to a particular website, or portion 
+of a website. It actually just iteratively scrapes the results of the 
+[External links search][1] page, since (I believe) this functionality 
+isn't currently supported by the Wikipedia's [API][2]. If I'm wrong please 
+let me know!
 
 Usage
 -----
@@ -33,3 +35,4 @@ License
 * CC0
 
 [1]: https://en.wikipedia.org/wiki/Special:LinkSearch
+[2]: https://en.wikipedia.org/w/api.php
