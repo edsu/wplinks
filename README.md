@@ -1,6 +1,8 @@
 wplinks
 =======
 
+[![Build Status](https://secure.travis-ci.org/edsu/wplinks.png)](http://travis-ci.org/edsu/wplinks)
+
 wplinks provides a the `links` function that returns a generator for links 
 from Wikipedia articles to a particular website, or portion of a website. It 
 actually just iteratively scrapes the results of the 
