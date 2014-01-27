@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf8 -*-
 
 
 """
@@ -9,7 +8,6 @@ columns: wikipedia article url, external link url.
 """
 
 import re
-import sys
 import json
 import time
 import codecs
@@ -18,21 +16,12 @@ import urllib2
 
 RETRIES_BETWEEN_ERRORS = 5
 
-def main(website_url):
-    langs = ["ar", "bg", "ca", "cs", "da", "de", "el", "en", "eo", "es",
-            "eu", "fa", "fi", "fr", "he", "hu", "id", "it", "ja", "ko",
-            "lt", "ms", "nl", "no", "pl", "pt", "ro", "ru", "sk", "sl",
-            "sv", "tr", "uk", "vi", "vo", "zh"]
-    for lang in langs:
-        for src, target in links(website_url, lang=lang):
-            print src.encode('utf8'), "\t", target.encode('utf8')
-    
 
 def links(site, lang='en', page_size=500, offset=0):
     """
     a generator that returns a source, target tuples where source is the
     url for a document at wikipedia and target is a url for a document at 
-    a given site
+    a given site.
     """
     links_url = 'http://%s.wikipedia.org/w/index.php?title=Special:LinkSearch&target=%s&limit=%s&offset=%s'
     wikipedia_host = 'http://%s.wikipedia.org' % lang
@@ -78,9 +67,3 @@ def _fetch_again(e, url, params, retries):
             time.sleep(sleep_seconds)
             return _fetch(url, params, retries)
 
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print "usage: wplinks.py <website_url"
-        sys.exit(1)
-    main(sys.argv[1])
