@@ -1,18 +1,27 @@
 wplinks
 =======
 
-wplinks is a simplistic little function for getting a list of links from
-Wikipedia articles to a particular website, or portion of a website. It 
-actually just scrapes the results of the [External links search][1] page.
+wplinks provides a the `links` function that returns a generator for links 
+from Wikipedia articles to a particular website, or portion of a website. It 
+actually just iteratively scrapes the results of the 
+[External links search][1] page.
 
 Usage
 -----
 
 ```python
 
-import wplinks
+from wplinks import links 
 
 for src, target in links('http://www.theparisreview.org/interviews'):
+    print src, target
+```
+
+If you'd like results for a non English wikipedia use the lang parameter:
+
+```python
+
+for src, target in links('http://www.theparisreview.org/interviews', lang='fr'):
     print src, target
 ```
 
