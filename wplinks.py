@@ -1,12 +1,5 @@
 #!/usr/bin/env python
 
-
-"""
-Give wplinks a website URL and it will scrape the Wikipedia External link 
-search form for 36 Wikipedias and print out the results as tab separated
-columns: wikipedia article url, external link url.
-"""
-
 import re
 import json
 import time
@@ -19,7 +12,7 @@ RETRIES_BETWEEN_ERRORS = 5
 
 def links(site, lang='en', page_size=500, offset=0):
     """
-    a generator that returns a source, target tuples where source is the
+    a generator that returns source, target tuples where source is the
     url for a document at wikipedia and target is a url for a document at 
     a given site.
     """
