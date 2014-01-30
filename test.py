@@ -1,9 +1,9 @@
-from wplinks import links
+from wplinks import extlinks, links
 from urlparse import urlparse
 
 
-def test_links():
-    results = list(links("http://www.theparisreview.org/interviews"))
+def test_extlinks():
+    results = list(extlinks("http://www.theparisreview.org/interviews"))
     assert len(results) > 0
     assert len(results[0]) == 2
     u = urlparse(results[0][0])
@@ -12,8 +12,8 @@ def test_links():
     assert u.netloc == 'www.theparisreview.org'
     assert u.path.startswith('/interviews')
 
-def test_lang():
-    results = list(links("http://www.theparisreview.org/interviews", lang='fr'))
+def test_extlinks_lang():
+    results = list(extlinks("http://www.theparisreview.org/interviews", lang='fr'))
     assert len(results) > 0
     u = urlparse(results[0][0])
     assert u.netloc == 'fr.wikipedia.org'
@@ -21,7 +21,10 @@ def test_lang():
     assert u.netloc == 'www.theparisreview.org'
     assert u.path.startswith('/interviews')
 
-def test_paging():
-    results = list(links("http://www.theparisreview.org"))
+def test_extlinks_paging():
+    results = list(extlinks("http://www.theparisreview.org"))
     assert len(results) > 500
 
+def test_links():
+    results = list(links("http://en.wikipedia.org/wiki/Philosophy"))
+    assert len(results) > 500
