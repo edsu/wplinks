@@ -49,7 +49,8 @@ def links(article_url):
         page_id = results['query']['pages'].keys()[0]
         if page_id != -1:
             for link in results['query']['pages'][page_id]['links']:
-                yield link['title']
+                yield 'https://%s.wikipedia.org/wiki/%s' % \
+                        (lang, _escape(link['title']))
             if 'query-continue' in results:
                 cont = results['query-continue']['links']['plcontinue']
             else:

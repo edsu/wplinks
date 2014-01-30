@@ -28,3 +28,4 @@ def test_extlinks_paging():
 def test_links():
     results = list(links("http://en.wikipedia.org/wiki/Philosophy"))
     assert len(results) > 500
+    assert results[0].startswith('https://en.wikipedia.org/wiki/')

@@ -15,7 +15,7 @@ class PyTest(TestCommand):
 
 setup( 
     name = 'wplinks',
-    version = '0.0.1',
+    version = '0.0.3',
     url = 'http://github.com/edsu/wplinks',
     author = 'Ed Summers',
     author_email = 'ehs@pobox.com',
