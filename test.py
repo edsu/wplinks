@@ -21,4 +21,7 @@ def test_lang():
     assert u.netloc == 'www.theparisreview.org'
     assert u.path.startswith('/interviews')
 
+def test_paging():
+    results = list(links("http://www.theparisreview.org"))
+    assert len(results) > 500
 
