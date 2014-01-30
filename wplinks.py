@@ -42,7 +42,7 @@ def links(article_url):
     cont = None
     while True:
         if cont:
-            u = url + '&plcontinue=' + cont
+            u = url + '&plcontinue=' + urllib.quote(cont.encode('utf-8'))
         else:
             u = url
         results = _get_json(u)
