@@ -5,9 +5,13 @@ wplinks
 
 wplinks provides a generator function called `links` that lets you iterate
 through links from Wikipedia articles to a particular website, or portion 
-of a website. It used to be somewhat involved since it scraped the 
-[External links search][1] page, but became quite a bit simpler once I 
-discovered the `exturlusage` [API](http://en.wikipedia.org/w/api.php) call.
+of a website. 
+
+wplinks used to be somewhat involved since it scraped the 
+[External links search][1] page. It became quite a bit simpler once I 
+discovered the `exturlusage` [API][2] call. You might want to make this 
+API call yourself and page through the results, without including wplinks
+as a dependency.  But I left it here just in case you'd rather not.
 
 Usage
 -----
